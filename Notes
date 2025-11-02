@@ -1,0 +1,29 @@
+Insert into Account
+VALUSES (290, 'Ethan Carr', 5000);
+
+--
+
+Select Name FROM Account 
+where Balance > 3000;
+
+--
+
+Update Account
+Set Ballance = 4500 
+Where ID = 831;
+
+--
+
+Delete FROM Account
+Where ID = 572;
+
+--
+
+CREATE TABLE Employee (
+ID INT,
+NAME VARCHAR(60),
+Birthdate DATE
+);
+
+--
+
