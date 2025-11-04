@@ -1,4 +1,4 @@
-Insert into Account
+Insert into Account (ID, Name, Population)
 VALUSES (290, 'Ethan Carr', 5000);
 
 --
