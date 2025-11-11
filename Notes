@@ -27,3 +27,119 @@ Birthdate DATE
 
 --
 
+CREATE TABLE Department (
+Code TINYINT UNSIGNED,
+NAME VARCHAR(20),
+ManagerID SMALLINT UNSIGNED,
+PRIMARY KEY (CODE)
+FOREIGN KEY (ManagerID) Refernces Employer(ID)
+  ON DELETE SET NULL
+  ON UPDATE CASCADE
+);
+
+--
+SELECT * 
+FROM City
+LIMIT 100;
+
+--
+
+SELECT *
+FROM Country
+WHERE IndepYear IS NULL
+
+--
+
+SELECT *
+FROM CountryLanguage
+WHERE Language IN ('Dutch', 'Kongo', 'Albanian');
+
+--
+
+SELECT *
+FROM CountryLanguage
+WHERE Language NOT IN ('Dutch', 'Kongo', 'Albanian');
+
+--
+
+SELECT Name
+FROM Employee
+WHERE HireDate >= '2000-01-01' AND HireDate <= '2020-01-01';
+
+SELECT Name
+FROM Employee
+WHERE HireDate BETWEEN '2000-01-01' AND '2020-01-01';
+
+--
+
+SELECT DISTINCT Language
+FROM CountryLanguage
+WHERE IsOfficial = 'F';
+
+--
+
+SELECT AVG(Salary)
+FROM Employee
+
+--
+
+SELECT * 
+FROM CountryLanguage 
+ORDER BY Language;
+
+SELECT * 
+FROM CountryLanguage 
+ORDER BY Language DESC;
+
+--
+SELECT CountryCode, District, Count(*)
+FROM City
+GROUP BY CountryCode, District
+
+SELECT Make, Count(*)
+FROM Auto
+GROUP BY Make
+ORDER BY Make;
+
+SELECT CountryCode, District, Count(*)
+FROM City
+GROUP BY CountryCode, District
+HAVING SUM(Population) > 2300000
+
+
+--
+
+SELECT Department.Name AS Team, 
+       Employee.Name AS Supervisor
+FROM Department, Employee
+WHERE Manager = ID;
+
+SELECT City.Name AS Town, Language
+FROM Country, City
+WHERE Country.Code = City.Code;
+
+SELECT Department.Name AS Team, Employee.Name AS Supervisor
+From Department
+INNER JOIN Employee
+ON Manager = ID
+
+SELECT Name, Birthplace, Title, Year, City, ArtistId, 
+FROM Artist, Museum, Artwork
+ORDER BY Year
+INNER JOIN Artwork
+ON Artist.ArtistId = Artwork.ArtistId
+INNER JOIN Museum
+ON Artwork.MuseumId = Museum.MuseumId;
+
+--
+
+CREATE VIEW ViewName [ ( Column1, Column2, ... ) ]
+AS SelectStatement;
+
+--
+
+CREATE VIEW ViewName [ ( Column1, Column2, ... ) ]
+AS SelectStatement
+[ WITH CHECK OPTION ];
+
+--
